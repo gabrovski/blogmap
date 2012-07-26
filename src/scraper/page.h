@@ -16,9 +16,7 @@ class Page {
 
  public:
   Page();
-  Page(int, string, string);
-
-  int acquire_page();
+  Page(int, string);
 
   int get_depth()               { return this->depth;    } 
   string get_url()              { return this->url;      }

@@ -6,6 +6,7 @@ using namespace std;
 
 int main() {
 
-  cout << "works!" << endl;
+  Page p = Page(0, "http://www.dartmouth.edu");
+  
   return 0;
 }

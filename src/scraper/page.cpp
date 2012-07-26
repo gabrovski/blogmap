@@ -1,5 +1,6 @@
 #include "page.h"
-#include <curl/curl.h>
+#include "../util/util.h"
+#include <iostream>
 using namespace std;
 
 Page::Page() {
@@ -7,13 +8,14 @@ Page::Page() {
     url = "/na";
 }
   
-Page::Page(int d, string u, string text) {
+Page::Page(int d, string u) {
     depth = d;
     url = u;
-    html = text;
+
+    html = get_page(url);
+  
+    //TODO error check
 }
 
-int Page::acquire_page() {
-  
-  return -1;
-}
+
+
