@@ -6,7 +6,7 @@ CC=c++
 all: $(TARGET)
 
 $(TARGET): $(SOURCE)
-	$(CC) $(SOURCE) -g -lcurl -std=c++11 -o $(TARGET)
+	$(CC) $(SOURCE) -g -lcurl -lboost_regex -o $(TARGET)
 
 clean:
 	rm -f $(TARGET)
