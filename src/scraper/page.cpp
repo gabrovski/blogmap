@@ -36,7 +36,7 @@ string Page::get_page_root() {
 Page::Page(int d, string u) {
   depth = d;
   url = u;
-  cout << url << endl;
+  cout << url << " at depth " << depth;
 
   if (g_visited.find(url) == g_visited.end()) {
     html = get_page(url);
@@ -45,7 +45,7 @@ Page::Page(int d, string u) {
     write_page();
   }
   else {
-    cout << "already visited" << endl;
+    cout << " already visited" << endl;
   }
   //cout << "root " << root << endl;
     //TODO error check
@@ -83,11 +83,13 @@ void Page::find_children() {
   int i;
   vector<string> links = get_root_links();
   
-  for (i = 0 ; i < 5 && i < links.size(); i++) {
+  for (i = 0 ; i < links.size(); i++) {
     try {
-      Page p(this->get_depth(), links.at(i));
-      if (p.is_valid())
-	this->get_children().push_back(p);
+      Page p(this->get_depth()+1, links.at(i));
+      if (p.is_valid()) {
+	this->children.push_back(p);
+	cout << " validated, total chidlren " << this->get_children().size() << endl;
+      }
     }
     catch (exception& e) {
       cout << links.at(i) << " failed" << endl ;
@@ -100,11 +102,11 @@ void Page::find_children() {
 
 void Page::find_rec_children(int maxdepth) {
   int i;
-  if (this->depth < maxdepth-1) {
+  if (this->depth < maxdepth) {
     this->find_children();
 
-    for (i = 0; i < this->get_children().size(); i++) {
-      this->get_children().at(i).find_rec_children(maxdepth);
+    for (i = 0; i < this->children.size(); i++) {
+      this->children.at(i).find_rec_children(maxdepth);
     }
   }
 }

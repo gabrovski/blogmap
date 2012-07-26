@@ -34,12 +34,12 @@ class Page {
   Page(int, string);
   ~Page();
 
-  int get_depth()               { return this->depth;     } 
-  string get_url()              { return this->url;       }
-  string get_html()             { return this->html;      }
-  string get_path()             { return this->path;      }
-  vector<Page> get_children()   { return this->children;  }
-  string get_root()             { return this->root;      }
+  int get_depth()               { return depth;     } 
+  string get_url()              { return url;       }
+  string get_html()             { return html;      }
+  string get_path()             { return path;      }
+  vector<Page> get_children()   { return children;  }
+  string get_root()             { return root;      }
 
   bool is_valid();
   vector<string> get_root_links();

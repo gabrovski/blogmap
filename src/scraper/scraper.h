@@ -12,7 +12,10 @@ class Scraper {
 
  public:
   Scraper();
-  vector<Page> get_pages();
+  Scraper(vector<string>);
+  ~Scraper();
+  vector<Page> get_pages() { return pages; }
+  void run(int);
 };
 
 #endif
