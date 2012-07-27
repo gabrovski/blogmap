@@ -1,5 +1,5 @@
 #ifndef _BLOG_PAGE_H
-#define _BLOG_PAGE_H
+#define _BLOG_PAGE_H 1
 
 #include <vector>
 #include <string>

@@ -1,4 +1,4 @@
-SOURCE=src/scraper/page.cpp src/scraper/scraper.cpp src/main.cpp src/util/util.cpp
+SOURCE=src/scraper/page.cpp src/scraper/scraper.cpp src/main.cpp src/util/util.cpp src/indexer/word.cpp
 TARGET=blogmap
 CC=c++
 
