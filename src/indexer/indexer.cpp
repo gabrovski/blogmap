@@ -1,6 +1,7 @@
 #include "indexer.h"
 
-boost::regex html_re("(<.+?>)");
+boost::regex css_re("(<style.+?</style>)(?s)|(<script>.+?</script>)(?s)");
+boost::regex html_re("(<.+?>)(?s)");
 boost::regex word_re("[a-zA-Z]+");
 
 void Indexer::initialize() {
@@ -37,7 +38,9 @@ void Indexer::parse_file(string path) {
       articles.push_back(a);
 	
       buf << f.rdbuf();
-      string clean = boost::regex_replace(buf.str(), html_re, "");
+
+      string clean = boost::regex_replace(buf.str(), css_re, "");
+      clean = boost::regex_replace(clean, html_re, "");
       
       start = clean.begin();
       end = clean.end();

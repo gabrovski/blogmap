@@ -41,6 +41,7 @@ Article::Article(string s) { url = s; }
 
 void Article::add_word(string s) {
   Word *w = get_or_create_word(s);
+
   if (w->add_article(this)) 
     this->word_heap.push_back(w);
     
