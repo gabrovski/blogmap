@@ -14,14 +14,14 @@ using namespace std;
 class Indexer {
 
  private:
-  vector<Article> articles;
+  vector<Article*> articles;
   bool init;
   
  public:
   Indexer()  { init = false; }
   ~Indexer() {}
   
-  vector<Article> get_articles() const { return articles; }
+  vector<Article*> get_articles() const { return articles; }
   bool is_initialized()          const { return init;     }
 
 

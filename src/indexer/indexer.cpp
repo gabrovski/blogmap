@@ -9,7 +9,7 @@ void Indexer::initialize() {
   compute_df_scores();
 
   for (i = 0; i < this->articles.size(); i++)
-    this->articles.at(i).init_heap();
+    this->articles.at(i)->init_heap();
   
   init = true;
 }
@@ -33,7 +33,7 @@ void Indexer::parse_file(string path) {
     
     if((i = line.find("<URL#")) != string::npos) {
       j = line.find("#URL>");
-      Article a(line.substr(i, j));
+      Article *a = new Article(line.substr(i, j));
       articles.push_back(a);
 	
       buf << f.rdbuf();
@@ -44,7 +44,7 @@ void Indexer::parse_file(string path) {
       while (boost::regex_search(start, end, words, word_re)) {
 	start = words[0].second;
      
-	a.add_word(string(words[0].first, words[0].second));
+	a->add_word(string(words[0].first, words[0].second));
       }
     }
     

@@ -16,7 +16,7 @@ class Word;
 
 class Article {
  private:
-  vector<Word> word_heap;
+  vector<Word*> word_heap;
   string url;
 
  public:
@@ -29,8 +29,8 @@ class Article {
   bool operator == (const Article& a2 ) const { get_url() == a2.get_url() ;} 
 
   void add_word(string s);
-  Word peek_top();
-  Word pop_top();
+  Word *peek_top();
+  Word *pop_top();
   void init_heap();
 };
 
@@ -38,7 +38,7 @@ class Article {
 class Word {
 
  private:
-  set<Article> articles;
+  set<Article*> articles;
   double df_score;
   string word;
   
@@ -48,7 +48,7 @@ class Word {
   ~Word();
   Word(string s);
 
-  set<Article> get_articles() const   { return articles; }
+  set<Article*> get_articles() const   { return articles; }
   double get_df_score()       const    { return df_score; }
   string get_word()           const    { return word; }
   
@@ -57,12 +57,12 @@ class Word {
   bool operator < (const Word& w2)  const { get_df_score() < w2.get_df_score() ;}
   bool operator == (const Word& w2 ) const { get_df_score() == w2.get_df_score() ;}
 
-  bool add_article(Article a);
+  bool add_article(Article *a);
    
 };
 
 
-Word get_or_create_word(string s);
+Word* get_or_create_word(string s);
 void compute_df_scores();
 
 #endif
