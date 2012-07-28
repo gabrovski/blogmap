@@ -13,20 +13,27 @@
 using namespace std;
 
 class Word;
+extern map<string, Word*> word_map;
 
 class Article {
  private:
   vector<Word*> word_heap;
   string url;
+  int id;
+  string title;
 
  public:
-  Article(string);
+  Article(string, int);
   Article();
   ~Article();
 
   string get_url() const { return url; } 
   bool operator < (const Article& a2)  const { get_url() < a2.get_url() ;} 
   bool operator == (const Article& a2 ) const { get_url() == a2.get_url() ;} 
+  int get_id()  const { return id; }
+  string get_title() const { return title; }
+
+  void set_title(string s) { title = s ;}
 
   void add_word(string s);
   Word *peek_top();

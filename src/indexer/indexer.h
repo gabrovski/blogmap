@@ -28,7 +28,7 @@ class Indexer {
   void parse_file(string path);
   void parse_dir(string path);
   void parse_xml(string path);
-  void out_xml(string path);
+  void out_xml(const char *path);
   void initialize();
 
 };

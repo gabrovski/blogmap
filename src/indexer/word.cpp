@@ -37,7 +37,10 @@ bool Word::add_article(Article *a) {
 
 Article::Article() { }
 Article::~Article() { }
-Article::Article(string s) { url = s; }
+Article::Article(string s, int i) { 
+  url = s; 
+  id = i;
+}
 
 void Article::add_word(string s) {
   Word *w = get_or_create_word(s);
@@ -67,9 +70,8 @@ void compute_df_scores() {
   for (it = word_map.begin(); it != word_map.end(); it++) {
     Word *w = (*it).second;
     double score = w->get_articles().size();
-    if (score == 0)
-      score = 1;
-
-    w->set_df_score(1 / log(score));
+    if (score == 1) score++;
+    if (score > 1)
+      w->set_df_score(1 / log(score));
   }
 }

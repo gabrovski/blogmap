@@ -11,6 +11,10 @@ int main() {
   Indexer ind;
 
   ind.parse_dir("data/");
+  cout << "finished parsing" << endl;
+  ind.initialize();
+  cout << "tf finished" << endl;
+  ind.out_xml("out/df.txt");
 
   return 0;
 }
