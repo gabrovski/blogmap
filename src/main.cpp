@@ -1,18 +1,22 @@
-#include "scraper/page.h"
 #include "scraper/scraper.h"
-#include "indexer/word.h"
+#include "indexer/indexer.h"
 
 #include <iostream>
 #include <vector>
 using namespace std;
 
-int main() {
+void scrape();
 
+int main() {
+  Indexer ind;
+
+  ind.parse_dir("data/");
 
   return 0;
 }
 
-/*
+
+void scrape() {
   vector<string> seeds;
   seeds.push_back("http://www.blue-kitchen.com/");
   seeds.push_back("http://80breakfasts.blogspot.com/");
@@ -23,4 +27,4 @@ int main() {
   Scraper s(seeds);
   
   s.run(4);
-*/
+}

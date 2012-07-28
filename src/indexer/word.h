@@ -8,6 +8,7 @@
 #include <boost/regex.hpp>
 #include <map>
 #include <algorithm>
+#include <math.h>
 
 using namespace std;
 
@@ -19,18 +20,18 @@ class Article {
   string url;
 
  public:
+  Article(string);
+  Article();
+  ~Article();
 
-  string get_url() const { return url; }
+  string get_url() const { return url; } 
+  bool operator < (const Article& a2)  const { get_url() < a2.get_url() ;} 
+  bool operator == (const Article& a2 ) const { get_url() == a2.get_url() ;} 
 
   void add_word(string s);
   Word peek_top();
   Word pop_top();
- 
- 
-  bool operator < (const Article& a2)  const { get_url() < a2.get_url() ;} 
-  bool operator == (const Article& a2 ) const { get_url() == a2.get_url() ;} 
-  
-
+  void init_heap();
 };
 
 
@@ -56,14 +57,12 @@ class Word {
   bool operator < (const Word& w2)  const { get_df_score() < w2.get_df_score() ;}
   bool operator == (const Word& w2 ) const { get_df_score() == w2.get_df_score() ;}
 
-  void add_article(Article a);
+  bool add_article(Article a);
    
 };
 
-bool compare_words(Word a, Word b);  
-
-bool compare_articles(Article a, Article b);
 
 Word get_or_create_word(string s);
+void compute_df_scores();
 
 #endif
